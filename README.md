@@ -33,6 +33,7 @@ export INGRESS_HOST=$(minikube ip)
 export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 echo "http://$GATEWAY_URL/productpage"
 
+curl 172.17.0.54/productpage 2>&1 | grep "color"
 
 
 
