@@ -22,6 +22,10 @@ kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
 # verify the app
 kubectl exec "$(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -sS productpage:9080/productpage | grep -o "<title>.*</title>"
 
+ istioctl analyze
+Info [IST0102] (Namespace default) The namespace is not enabled for Istio injection. Run 'kubectl label namespace default istio-injection=enabled' to enable it, or 'kubectl label namespace default istio-injection=disabled' to explicitly mark it as not needing injection.
+
+
 # gateway + virtualservice
 kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
 istioctl analyze
